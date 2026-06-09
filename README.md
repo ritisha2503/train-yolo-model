@@ -1,0 +1,149 @@
+# Train YOLO Model
+
+A custom object detection project using [Ultralytics YOLO11](https://docs.ultralytics.com/) trained to detect 3 objects — **bottle**, **car**, and **cup** — using a custom dataset labeled with [Label Studio](https://labelstud.io/). Includes a real-time webcam detection script.
+
+---
+
+## Project Structure
+
+```
+train-yolo-model/
+├── data/
+│   ├── images/           # Original labeled images (45 total)
+│   ├── labels/           # YOLO-format annotation .txt files
+│   ├── train/            # 80% split — used for training (36 images)
+│   │   ├── images/
+│   │   └── labels/
+│   ├── validation/       # 20% split — used for evaluation (9 images)
+│   │   ├── images/
+│   │   └── labels/
+│   └── classes.txt       # Class names: bottle, car, cup
+├── runs/
+│   └── detect/
+│       └── train/
+│           └── weights/
+│               ├── best.pt   # Best model checkpoint (used for inference)
+│               └── last.pt   # Final epoch checkpoint
+├── notebooks/
+│   └── train_yolo.ipynb  # End-to-end training notebook
+├── detector.py           # ObjectDetector class — wraps YOLO model
+├── main.py               # Webcam detection script
+├── data.yaml             # Ultralytics training config
+├── requirements.txt      # Python dependencies
+└── pyproject.toml
+```
+
+---
+
+## Classes
+
+| ID | Name   |
+|----|--------|
+| 0  | bottle |
+| 1  | car    |
+| 2  | cup    |
+
+---
+
+## Setup
+
+**Prerequisites:** Python 3.12+
+
+```bash
+# Clone the repo
+git clone <repo-url>
+cd train-yolo-model
+
+# Create and activate a virtual environment
+python -m venv .venv
+source .venv/bin/activate      # macOS / Linux
+# .venv\Scripts\activate       # Windows
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+---
+
+## Training
+
+All training steps are documented and runnable in [`notebooks/train_yolo.ipynb`](notebooks/train_yolo.ipynb). The notebook covers:
+
+1. **Gather & Label Data** — 15 images per class (45 total), labeled with Label Studio
+2. **Train/Val Split** — 80/20 random split into `data/train/` and `data/validation/`
+3. **Configure Training** — auto-generates `data.yaml` from `classes.txt`
+4. **Install Requirements** — installs Ultralytics
+5. **Train Model** — fine-tunes YOLO11s for 60 epochs at 640×640 resolution
+6. **Test Model** — runs the model on validation images and displays predictions
+7. **Evaluate Accuracy** — reports mAP50, mAP50-95, precision, and recall per class
+
+### Training command (equivalent)
+
+```python
+from ultralytics import YOLO
+
+model = YOLO('yolo11s.pt')
+model.train(data='data.yaml', epochs=60, imgsz=640)
+```
+
+### Training parameters
+
+| Parameter | Value      | Notes                                      |
+|-----------|------------|--------------------------------------------|
+| Model     | yolo11s.pt | Small — good balance of speed and accuracy |
+| Epochs    | 60         | Recommended for datasets under 200 images  |
+| imgsz     | 640        | Standard YOLO resolution                  |
+| Train     | 36 images  | 80% of dataset                            |
+| Val       | 9 images   | 20% of dataset                            |
+
+---
+
+## Real-Time Webcam Detection
+
+Run the trained model on your webcam:
+
+```bash
+python main.py
+```
+
+A window will open showing your webcam feed with bounding boxes drawn around detected objects. Each box shows the class name and confidence score.
+
+**Press `q` to quit.**
+
+### How it works
+
+- [`detector.py`](detector.py) — `ObjectDetector` class loads `best.pt` and runs inference on individual frames
+- [`main.py`](main.py) — captures frames from the webcam, passes them to the detector, draws colored boxes, and displays the result with OpenCV
+
+### Detection colors
+
+| Class  | Color  |
+|--------|--------|
+| bottle | Green  |
+| car    | Orange |
+| cup    | Blue   |
+
+---
+
+## Metrics
+
+Evaluated on the 9-image validation set using `model.val()`:
+
+| Metric    | Description                                               |
+|-----------|-----------------------------------------------------------|
+| mAP50     | Mean Average Precision at IoU ≥ 0.50 (primary metric)    |
+| mAP50-95  | Stricter average across IoU thresholds 0.50–0.95          |
+| Precision | Of all predicted boxes, fraction that were correct        |
+| Recall    | Of all real objects, fraction that were detected          |
+
+---
+
+## Dependencies
+
+| Package      | Purpose                              |
+|--------------|--------------------------------------|
+| ultralytics  | YOLO model training and inference    |
+| torch        | Deep learning backend                |
+| opencv-python| Webcam capture and image display     |
+| pyyaml       | Parsing `data.yaml` config           |
+| ipykernel    | Running the Jupyter notebook         |
