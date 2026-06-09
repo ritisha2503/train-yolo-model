@@ -51,8 +51,7 @@ train-yolo-model/
 
 ```bash
 # Clone the repo
-git clone <repo-url>
-cd train-yolo-model
+git clone https://github.com/ritisha2503/train-yolo-model.git
 
 # Create and activate a virtual environment
 python -m venv .venv
@@ -175,4 +174,4 @@ The model achieves near-perfect recall across all 3 classes, meaning it successf
 
 ## References
 
-(How to Train YOLO Object Detection Models in Google Colab (YOLO26, YOLO11, YOLOv8))[https://www.youtube.com/watch?v=r0RspiLG260]
+[How to Train YOLO Object Detection Models in Google Colab (YOLO26, YOLO11, YOLOv8)](https://www.youtube.com/watch?v=r0RspiLG260)
