@@ -71,10 +71,9 @@ All training steps are documented and runnable in [`notebooks/train_yolo.ipynb`]
 1. **Gather & Label Data** — 15 images per class (45 total), labeled with Label Studio
 2. **Train/Val Split** — 80/20 random split into `data/train/` and `data/validation/`
 3. **Configure Training** — auto-generates `data.yaml` from `classes.txt`
-4. **Install Requirements** — installs Ultralytics
-5. **Train Model** — fine-tunes YOLO11s for 60 epochs at 640×640 resolution
-6. **Test Model** — runs the model on validation images and displays predictions
-7. **Evaluate Accuracy** — reports mAP50, mAP50-95, precision, and recall per class
+4. **Train Model** — fine-tunes YOLO11s for 60 epochs at 640×640 resolution
+5. **Test Model** — runs the model on validation images and displays predictions
+6. **Evaluate Accuracy** — reports mAP50, mAP50-95, precision, and recall per class
 
 ### Training command (equivalent)
 
