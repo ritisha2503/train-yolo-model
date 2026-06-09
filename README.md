@@ -29,81 +29,17 @@ train-yolo-model/
 ├── pyproject.toml
 ├── requirements.txt
 ├── runs/
-│   └── detect/
-│       ├── predict/
-│       │   ├── 09e4ea26-car12.jpg
-│       │   ├── 5a26b2b4-car9.jpg
-│       │   ├── 6336ee5d-car3.jpg
-│       │   ├── 6f941e56-bottle9.jpg
-│       │   ├── 767ee118-cup15.jpg
-│       │   ├── 8d242366-cup12.jpg
-│       │   ├── d7233f37-bottle6.jpg
-│       │   ├── f1be179e-bottle15.jpg
-│       │   └── f2ac9bee-car10.jpg
-│       ├── predict-2/
-│       │   ├── 09e4ea26-car12.jpg
-│       │   ├── 5a26b2b4-car9.jpg
-│       │   ├── 6336ee5d-car3.jpg
-│       │   ├── 6f941e56-bottle9.jpg
-│       │   ├── 767ee118-cup15.jpg
-│       │   ├── 8d242366-cup12.jpg
-│       │   ├── d7233f37-bottle6.jpg
-│       │   ├── f1be179e-bottle15.jpg
-│       │   └── f2ac9bee-car10.jpg
-│       ├── predict-3/
-│       │   ├── 09e4ea26-car12.jpg
-│       │   ├── 5a26b2b4-car9.jpg
-│       │   ├── 6336ee5d-car3.jpg
-│       │   ├── 6f941e56-bottle9.jpg
-│       │   ├── 767ee118-cup15.jpg
-│       │   ├── 8d242366-cup12.jpg
-│       │   ├── d7233f37-bottle6.jpg
-│       │   ├── f1be179e-bottle15.jpg
-│       │   └── f2ac9bee-car10.jpg
-│       ├── predict-4/
-│       │   ├── 09e4ea26-car12.jpg
-│       │   ├── 5a26b2b4-car9.jpg
-│       │   ├── 6336ee5d-car3.jpg
-│       │   ├── 6f941e56-bottle9.jpg
-│       │   ├── 767ee118-cup15.jpg
-│       │   ├── 8d242366-cup12.jpg
-│       │   ├── d7233f37-bottle6.jpg
-│       │   ├── f1be179e-bottle15.jpg
-│       │   └── f2ac9bee-car10.jpg
-│       ├── train/
-│       │   ├── BoxF1_curve.png
-│       │   ├── BoxPR_curve.png
-│       │   ├── BoxP_curve.png
-│       │   ├── BoxR_curve.png
-│       │   ├── args.yaml
-│       │   ├── confusion_matrix.png
-│       │   ├── confusion_matrix_normalized.png
-│       │   ├── labels.jpg
-│       │   ├── results.csv
-│       │   ├── results.png
-│       │   ├── train_batch0.jpg
-│       │   ├── train_batch1.jpg
-│       │   ├── train_batch150.jpg
-│       │   ├── train_batch151.jpg
-│       │   ├── train_batch152.jpg
-│       │   ├── train_batch2.jpg
-│       │   ├── val_batch0_labels.jpg
-│       │   ├── val_batch0_pred.jpg
-│       │   └── weights/
-│       │       ├── best.pt
-│       │       └── last.pt
-│       └── val/
-│           ├── BoxF1_curve.png
-│           ├── BoxPR_curve.png
-│           ├── BoxP_curve.png
-│           ├── BoxR_curve.png
-│           ├── confusion_matrix.png
-│           ├── confusion_matrix_normalized.png
-│           ├── val_batch0_labels.jpg
-│           └── val_batch0_pred.jpg
+│   └── detect/           # YOLO output directory (auto-generated)
+│       ├── predict/       # Inference run 1 — saved detection results (images + labels)
+│       ├── predict-2/     # Inference run 2
+│       ├── predict-3/     # Inference run 3
+│       ├── predict-4/     # Inference run 4
+│       ├── train/         # Training run output (metrics, plots, config)
+│       │   └── weights/   # Saved model checkpoints
+│       │       ├── best.pt  # Best checkpoint (highest val mAP)
+│       │       └── last.pt  # Final epoch checkpoint
+│       └── val/           # Validation run output (metrics, confusion matrix, plots)
 ├── screenshots/
-│   ├── data_labelling.webm
-│   └── data_structure.png
 └── uv.lock
 ```
 
