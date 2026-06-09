@@ -8,6 +8,7 @@ A custom object detection project using [Ultralytics YOLO11](https://docs.ultral
 
 ```
 train-yolo-model/
+├── README.md
 ├── data/
 │   ├── images/           # Original labeled images (45 total)
 │   ├── labels/           # YOLO-format annotation .txt files
@@ -17,20 +18,93 @@ train-yolo-model/
 │   ├── validation/       # 20% split — used for evaluation (9 images)
 │   │   ├── images/
 │   │   └── labels/
-│   └── classes.txt       # Class names: bottle, car, cup
+│   ├── classes.txt       # Class names: bottle, car, cup
+│   └── notes.json        # Contains files specific to Label Studio(ignorable)
+├── data.yaml
+├── detector.py
+├── main.py
+├── notebooks/
+│   ├── train_yolo.ipynb
+│   └── yolo11s.pt
+├── pyproject.toml
+├── requirements.txt
 ├── runs/
 │   └── detect/
-│       └── train/
-│           └── weights/
-│               ├── best.pt   # Best model checkpoint (used for inference)
-│               └── last.pt   # Final epoch checkpoint
-├── notebooks/
-│   └── train_yolo.ipynb  # End-to-end training notebook
-├── detector.py           # ObjectDetector class — wraps YOLO model
-├── main.py               # Webcam detection script
-├── data.yaml             # Ultralytics training config
-├── requirements.txt      # Python dependencies
-└── pyproject.toml
+│       ├── predict/
+│       │   ├── 09e4ea26-car12.jpg
+│       │   ├── 5a26b2b4-car9.jpg
+│       │   ├── 6336ee5d-car3.jpg
+│       │   ├── 6f941e56-bottle9.jpg
+│       │   ├── 767ee118-cup15.jpg
+│       │   ├── 8d242366-cup12.jpg
+│       │   ├── d7233f37-bottle6.jpg
+│       │   ├── f1be179e-bottle15.jpg
+│       │   └── f2ac9bee-car10.jpg
+│       ├── predict-2/
+│       │   ├── 09e4ea26-car12.jpg
+│       │   ├── 5a26b2b4-car9.jpg
+│       │   ├── 6336ee5d-car3.jpg
+│       │   ├── 6f941e56-bottle9.jpg
+│       │   ├── 767ee118-cup15.jpg
+│       │   ├── 8d242366-cup12.jpg
+│       │   ├── d7233f37-bottle6.jpg
+│       │   ├── f1be179e-bottle15.jpg
+│       │   └── f2ac9bee-car10.jpg
+│       ├── predict-3/
+│       │   ├── 09e4ea26-car12.jpg
+│       │   ├── 5a26b2b4-car9.jpg
+│       │   ├── 6336ee5d-car3.jpg
+│       │   ├── 6f941e56-bottle9.jpg
+│       │   ├── 767ee118-cup15.jpg
+│       │   ├── 8d242366-cup12.jpg
+│       │   ├── d7233f37-bottle6.jpg
+│       │   ├── f1be179e-bottle15.jpg
+│       │   └── f2ac9bee-car10.jpg
+│       ├── predict-4/
+│       │   ├── 09e4ea26-car12.jpg
+│       │   ├── 5a26b2b4-car9.jpg
+│       │   ├── 6336ee5d-car3.jpg
+│       │   ├── 6f941e56-bottle9.jpg
+│       │   ├── 767ee118-cup15.jpg
+│       │   ├── 8d242366-cup12.jpg
+│       │   ├── d7233f37-bottle6.jpg
+│       │   ├── f1be179e-bottle15.jpg
+│       │   └── f2ac9bee-car10.jpg
+│       ├── train/
+│       │   ├── BoxF1_curve.png
+│       │   ├── BoxPR_curve.png
+│       │   ├── BoxP_curve.png
+│       │   ├── BoxR_curve.png
+│       │   ├── args.yaml
+│       │   ├── confusion_matrix.png
+│       │   ├── confusion_matrix_normalized.png
+│       │   ├── labels.jpg
+│       │   ├── results.csv
+│       │   ├── results.png
+│       │   ├── train_batch0.jpg
+│       │   ├── train_batch1.jpg
+│       │   ├── train_batch150.jpg
+│       │   ├── train_batch151.jpg
+│       │   ├── train_batch152.jpg
+│       │   ├── train_batch2.jpg
+│       │   ├── val_batch0_labels.jpg
+│       │   ├── val_batch0_pred.jpg
+│       │   └── weights/
+│       │       ├── best.pt
+│       │       └── last.pt
+│       └── val/
+│           ├── BoxF1_curve.png
+│           ├── BoxPR_curve.png
+│           ├── BoxP_curve.png
+│           ├── BoxR_curve.png
+│           ├── confusion_matrix.png
+│           ├── confusion_matrix_normalized.png
+│           ├── val_batch0_labels.jpg
+│           └── val_batch0_pred.jpg
+├── screenshots/
+│   ├── data_labelling.webm
+│   └── data_structure.png
+└── uv.lock
 ```
 
 ---
