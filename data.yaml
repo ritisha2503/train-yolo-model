@@ -1,0 +1,8 @@
+path: /home/ritisha/Projects/train-yolo-model/data
+train: train/images
+val: validation/images
+nc: 3
+names:
+- bottle
+- car
+- cup
