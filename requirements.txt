@@ -1,0 +1,6 @@
+ultralytics
+pyyaml
+ipython
+torch
+torchvision
+torchaudio
