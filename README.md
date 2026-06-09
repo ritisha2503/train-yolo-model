@@ -127,14 +127,37 @@ A window will open showing your webcam feed with bounding boxes drawn around det
 
 ## Metrics
 
-Evaluated on the 9-image validation set using `model.val()`:
-
 | Metric    | Description                                               |
 |-----------|-----------------------------------------------------------|
 | mAP50     | Mean Average Precision at IoU ≥ 0.50 (primary metric)    |
 | mAP50-95  | Stricter average across IoU thresholds 0.50–0.95          |
 | Precision | Of all predicted boxes, fraction that were correct        |
 | Recall    | Of all real objects, fraction that were detected          |
+
+---
+
+## Results
+
+Evaluated on the 9-image validation set using `model.val()` after 60 epochs of training on YOLO11s.
+
+### Overall
+
+| Metric    | Score  |
+|-----------|--------|
+| mAP50     | 0.995  |
+| mAP50-95  | 0.985  |
+| Precision | 0.955  |
+| Recall    | 1.000  |
+
+### Per Class
+
+| Class  | mAP50 | Precision | Recall |
+|--------|-------|-----------|--------|
+| bottle | 0.995 | 0.897     | 1.000  |
+| car    | 0.995 | 0.971     | 1.000  |
+| cup    | 0.995 | 0.996     | 1.000  |
+
+The model achieves near-perfect recall across all 3 classes, meaning it successfully detects every object in the validation set. mAP50 of 0.995 indicates excellent localisation accuracy at standard IoU threshold.
 
 ---
 
@@ -147,3 +170,9 @@ Evaluated on the 9-image validation set using `model.val()`:
 | opencv-python| Webcam capture and image display     |
 | pyyaml       | Parsing `data.yaml` config           |
 | ipykernel    | Running the Jupyter notebook         |
+
+---
+
+## References
+
+(How to Train YOLO Object Detection Models in Google Colab (YOLO26, YOLO11, YOLOv8))[https://www.youtube.com/watch?v=r0RspiLG260]
